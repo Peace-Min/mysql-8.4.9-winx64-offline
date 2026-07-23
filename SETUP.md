@@ -1,8 +1,36 @@
 # 폐쇄망 MySQL 8.4 서버 설치 (ZIP 무인스톨)
 
-`reassemble.cmd`로 `mysql-8.4.9-winx64.zip`을 복원한 뒤, 이 ZIP만으로 Windows에 MySQL 서버를 세우는 절차입니다. **온라인 접속 없이 완결**됩니다. (관리자 권한 콘솔에서 실행)
+`reassemble.cmd`로 `mysql-8.4.9-winx64.zip`을 복원한 뒤, 이 ZIP만으로 Windows에 MySQL 서버를 세웁니다. **온라인 접속 없이 완결**됩니다.
 
-> 예시 경로는 `C:\mysql` 기준. 원하는 곳으로 바꿔도 됩니다.
+---
+
+## ★ 자동 설치 (권장) — `setup.cmd` 더블클릭
+
+수동 절차가 번거로우면 **`setup.cmd` 를 더블클릭**하세요. 관리자 권한을 자동으로 올리고(UAC 승인) 아래를 한 번에 처리합니다:
+
+1. 압축 푼 폴더(또는 zip)를 찾아 `C:\mysql` 로 배치
+2. `my.ini` 생성 → 데이터 초기화 → **서비스 등록/시작** → **root 비밀번호 설정**(입력 요청) → (중앙서버면) 방화벽 3306 → 버전 확인
+
+진행 중 딱 두 가지만 물어봅니다: **중앙 서버인지(원격 허용)** / **root 비밀번호**.
+
+> **이미 하다가 꼬였을 때**: 기존 세팅(서비스·데이터 폴더)이 발견되면 "전부 지우고 새로 설치할까요?"를 물어봅니다. `y` 를 누르면 **이 폴더의 기존 MySQL 세팅만** 깨끗이 지우고 새로 깝니다. 확인 없이 밀어버리려면 명령줄로:
+> ```
+> powershell -ExecutionPolicy Bypass -File setup.ps1 -Reset
+> ```
+
+세부 지정이 필요할 때(옵션):
+```
+powershell -ExecutionPolicy Bypass -File setup.ps1 -BaseDir C:\mysql -Port 3306 -Central yes
+```
+- `-BaseDir` 설치 위치 · `-Port` 포트 · `-Central yes|no` 원격 허용 · `-ServiceName` 서비스명 · `-Reset` 기존 세팅 강제 삭제
+
+설치가 끝나면 아래 "다음: 앱 DB 구성"으로 이동하세요. **수동으로 하고 싶으면** 아래 절차를 따르면 됩니다.
+
+---
+
+## 수동 설치 (직접 하고 싶을 때)
+
+관리자 권한 콘솔에서 실행. 예시 경로는 `C:\mysql` 기준(원하는 곳으로 바꿔도 됨).
 
 ## 1. 압축 해제
 `mysql-8.4.9-winx64.zip`을 풀면 `mysql-8.4.9-winx64\`(bin, lib, share…)가 나옵니다. 이를 `C:\mysql`로 옮깁니다(즉 `C:\mysql\bin\mysqld.exe`가 되도록).
