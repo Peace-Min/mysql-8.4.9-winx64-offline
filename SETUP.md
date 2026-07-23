@@ -85,6 +85,16 @@ C:\mysql\bin\mysql -u root -p -e "SELECT VERSION();"
 
 ---
 
+## 설치 확인 — `check.cmd` (권장)
+
+설치가 제대로 됐는지 보려면 **`check.cmd` 더블클릭** → root 비번 입력. 읽기 전용(아무것도 안 바꿈)으로 점검:
+
+- 서비스 실행 · 접속+버전(8.4.9) · 문자셋(utf8mb4_0900_ai_ci)
+- (앱 DB가 있으면) `taskmgr` 테이블·건수·`taskmgr_app` 계정
+- 포트 3306 리스닝 / 원격 접속 가능 여부
+
+각 항목 `[OK]/[실패]` + `N 통과 / M 실패` 요약. 경로가 다르면 `check.cmd -BaseDir D:\mysql -Port 3307`.
+
 ## 다음: 앱 DB 구성
 서버가 뜨면, 각 앱 저장소의 스크립트로 데이터베이스·계정을 만듭니다. 예) 수행과제 캘린더:
 - `schema.sql` — DB·테이블 생성
