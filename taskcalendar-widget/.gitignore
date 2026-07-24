@@ -1,0 +1,6 @@
+# 재결합 결과물(>100MB일 수 있음)은 커밋하지 않음 — parts/ 로만 배포
+/TaskCalendarWidget.exe
+
+# 작업용 임시 파일
+_*.txt
+_verify.exe
