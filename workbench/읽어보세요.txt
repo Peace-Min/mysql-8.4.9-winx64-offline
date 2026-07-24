@@ -1,0 +1,48 @@
+========================================================
+ MySQL Workbench 8.0.42 — DB 뷰어/관리 GUI (오라클 공식)
+========================================================
+
+[이게 뭔가]
+ MySQL이 공식 제공하는 관리 도구. 테이블 목록과 데이터를
+ 엑셀처럼 표로 보고 직접 편집할 수 있다.
+ (우리가 설치한 ZIP 서버 패키지엔 GUI가 없어서 따로 담았다)
+
+[설치]
+ mysql-workbench-community-8.0.42-winx64.msi 더블클릭 → 설치
+
+ ※ 설치 중 "Visual C++ Redistributable 필요" 안내가 나오면
+   Microsoft 재배포 패키지를 먼저 설치해야 한다(대개 이미 설치돼 있음).
+
+[접속 설정]  (설치 후 첫 실행)
+ MySQL Connections 옆 [+] 클릭 후:
+
+     Connection Name :  로컬 taskmgr        (아무 이름)
+     Hostname        :  127.0.0.1
+     Port            :  3306
+     Username        :  root
+     Password        :  [Store in Vault...] 눌러 setup.cmd 때 정한 비번 입력
+
+ [Test Connection] 으로 확인 → OK → 만든 연결 더블클릭
+
+[과제 데이터 보기]
+ 왼쪽 SCHEMAS 패널에서  taskmgr  펼치기 → Tables
+   customer  (발주처)
+   project   (과제)
+ 테이블 이름 위에 마우스 → 표 아이콘 클릭하면 데이터가 표로 열린다.
+ (또는 우클릭 → Select Rows)
+
+ 쿼리로 보려면 상단 SQL 편집기에서:
+     SELECT * FROM taskmgr.project;
+     SELECT * FROM taskmgr.customer;
+
+[주의]
+ 여기서 데이터를 직접 수정할 수도 있지만,
+ 과제 추가/수정은 되도록 캘린더 위젯에서 하는 것을 권한다
+ (위젯이 ENUM·중복·발주처 FK 규칙을 대신 지켜준다).
+
+[무결성]
+ MD5: b45ed530b2f158f2f00a6bbb646ecc1e   (오라클 공식 공개값과 대조 완료)
+
+[라이선스]
+ MySQL Workbench Community Edition — GPLv2 (무료).
+ 소스: https://dev.mysql.com/downloads/workbench/
