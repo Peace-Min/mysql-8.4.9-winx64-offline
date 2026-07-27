@@ -2,10 +2,10 @@
 setlocal
 cd /d "%~dp0"
 set "NAME=TaskCalendarWidget.exe"
-set "EXPECT=37CC6C1ABB91A4ACE7F15EFC4BFB77539B4AD6E877EB6932C15FA7C82962B09E"
+set "EXPECT=0787713145F3E237C19124DA950EDDEB1222C1A3B98A30F09F6584CCF0A0BA5A"
 
 echo ============================================
-echo   taskcalendar-widget - 설치파일 재결합
+echo   tcw-new - 설치파일 재결합
 echo ============================================
 echo.
 
